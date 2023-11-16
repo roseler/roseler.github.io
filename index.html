@@ -64,7 +64,7 @@ submit.addEventListener('click',(e)=>
     const user = userCredential.user;
 
     set(ref(database, 'users/' + user.uid), {
-      email: email,
+      email: email
     });
     alert('Signed up');
     // ...
