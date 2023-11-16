@@ -15,7 +15,7 @@
     <input id="password" type="password" placeholder="Password"></input>
     <button id="submit">Submit</button>
     <p><span>or</span></p>
-    <button id="sign-up">Sign Up</button>
+    <button id="signup">Sign Up</button>
     <div id="create-acct">
       <h1>Create an Account</h1>
       <input id="emailsignup" type="text" placeholder="Email *"></input>
@@ -77,7 +77,11 @@ submit.addEventListener('click',(e)=>
     // ..
   });
 });
-
+signup.addEventListener('click',(e)=>
+{
+  document.getElementById("main").style.display = "none";
+  document.getElementById("create-acct").style.display = "block";
+});
 createacctbtn.addEventListener('click',(e)=>
 {
   var email = document.getElementById("email").value;
