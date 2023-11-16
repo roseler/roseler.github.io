@@ -17,17 +17,17 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 const submitButton = document.getElementById("submit");
-const signupButton = document.getElementById("sign-up");
+const signupButton = document.getElementById("signup");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const main = document.getElementById("main");
 const createacct = document.getElementById("create-acct")
 
-const signupEmailIn = document.getElementById("email-signup");
-const confirmSignupEmailIn = document.getElementById("confirm-email-signup");
-const signupPasswordIn = document.getElementById("password-signup");
-const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup");
-const createacctbtn = document.getElementById("create-acct-btn");
+const signupEmailIn = document.getElementById("emailsignup");
+const confirmSignupEmailIn = document.getElementById("confirmemailsignup");
+const signupPasswordIn = document.getElementById("passwordsignup");
+const confirmSignUpPasswordIn = document.getElementById("confirmpasswordsignup");
+const createacctbtn = document.getElementById("createacctbtn");
 
 const returnBtn = document.getElementById("return-btn");
 
