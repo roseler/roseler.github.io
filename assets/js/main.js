@@ -1,56 +1,105 @@
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
-    }
-}
-showMenu('nav-toggle','nav-menu')
+const firebaseConfig = {
+  apiKey: "AIzaSyCybmXAUWgGDCMNQWvcRdaMgE31I1GkF8M",
+  authDomain: "log-in-authentication-ac1b6.firebaseapp.com",
+  projectId: "log-in-authentication-ac1b6",
+  storageBucket: "log-in-authentication-ac1b6.appspot.com",
+  messagingSenderId: "735126972855",
+  appId: "1:735126972855:web:b26c16bd1de14bf361e032",
+  measurementId: "G-3GKSESXV7S"
+};
 
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
+const submitButton = document.getElementById("submit");
+const signupButton = document.getElementById("sign-up");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const main = document.getElementById("main");
+const createacct = document.getElementById("create-acct")
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
+const signupEmailIn = document.getElementById("email-signup");
+const confirmSignupEmailIn = document.getElementById("confirm-email-signup");
+const signupPasswordIn = document.getElementById("password-signup");
+const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup");
+const createacctbtn = document.getElementById("create-acct-btn");
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
+const returnBtn = document.getElementById("return-btn");
 
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword;
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active')
-        }
+createacctbtn.addEventListener("click", function() {
+  var isVerified = true;
+
+  signupEmail = signupEmailIn.value;
+  confirmSignupEmail = confirmSignupEmailIn.value;
+  if(signupEmail != confirmSignupEmail) {
+      window.alert("Email fields do not match. Try again.")
+      isVerified = false;
+  }
+
+  signupPassword = signupPasswordIn.value;
+  confirmSignUpPassword = confirmSignUpPasswordIn.value;
+  if(signupPassword != confirmSignUpPassword) {
+      window.alert("Password fields do not match. Try again.")
+      isVerified = false;
+  }
+  
+  if(signupEmail == null || confirmSignupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
+    window.alert("Please fill out all required fields.");
+    isVerified = false;
+  }
+  
+  if(isVerified) {
+    createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+      .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // ...
+      window.alert("Success! Account created.");
     })
-}
-window.addEventListener('scroll', scrollActive)
-
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
-//     reset: true
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      window.alert("Error occurred. Try again.");
+    });
+  }
 });
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+submitButton.addEventListener("click", function() {
+  email = emailInput.value;
+  console.log(email);
+  password = passwordInput.value;
+  console.log(password);
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log("Success! Welcome back!");
+      window.alert("Success! Welcome back!");
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("Error occurred. Try again.");
+      window.alert("Error occurred. Try again.");
+    });
+});
+
+signupButton.addEventListener("click", function() {
+    main.style.display = "none";
+    createacct.style.display = "block";
+});
+
+returnBtn.addEventListener("click", function() {
+    main.style.display = "block";
+    createacct.style.display = "none";
+});
