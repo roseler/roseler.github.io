@@ -22,7 +22,7 @@
       <input id="confirmemailsignup" type="email" placeholder="Confirm Email *"></input>
       <input id="passwordsignup" type="password" placeholder="Password *"></input>
       <input id="confirmpasswordsignup" type="password" placeholder="Confirm Password *"></input>
-      <button id="create-acct-btn">Create Account</button>
+      <button id="createacctbtn">Create Account</button>
       <button id="return-btn">Return to Login</button>
     </div>
   </div>
@@ -78,7 +78,7 @@ submit.addEventListener('click',(e)=>
   });
 });
 
-signup.addEventListener('click',(e)=>
+createacctbtn.addEventListener('click',(e)=>
 {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
