@@ -87,9 +87,9 @@ createacctbtn.addEventListener('click',(e)=>
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var emailsignup = document.getElementById("emailsignup").value;
-  var confirmemailsignup = document.getElementById("confirm-email-signup").value;
-  var passwordsignup = document.getElementById("password-signup").value;
-  var confirmpasswordsignup = document.getElementById("confirm-password-signup").value;
+  var confirmemailsignup = document.getElementById("confirmemailsignup").value;
+  var passwordsignup = document.getElementById("passwordsignup").value;
+  var confirmpasswordsignup = document.getElementById("confirmpasswordsignup").value;
 
 
   createUserWithEmailAndPassword(auth, email, password, emailsignup, confirmemailsignup, passwordsignup, confirmpasswordsignup)
@@ -99,9 +99,7 @@ createacctbtn.addEventListener('click',(e)=>
 
     set(ref(database, 'users/' + user.uid), {
       email: emailsignup,
-      email: confirmemailsignup,
       password: passwordsignup,
-      password: confirmpasswordsignup,
 
 
     });
