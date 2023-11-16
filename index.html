@@ -18,7 +18,7 @@
     <button id="sign-up">Sign Up</button>
     <div id="create-acct">
       <h1>Create an Account</h1>
-      <input id="email-signup" type="text" placeholder="Email *"></input>
+      <input id="emailsignup" type="text" placeholder="Email *"></input>
       <input id="confirm-email-signup" type="email" placeholder="Confirm Email *"></input>
       <input id="password-signup" type="password" placeholder="Password *"></input>
       <input id="confirm-password-signup" type="password" placeholder="Confirm Password *"></input>
@@ -57,7 +57,7 @@ submit.addEventListener('click',(e)=>
 {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
-  var emailsignup = document.getElementById("email-signup").value;
+  var emailsignup = document.getElementById("emailsignup").value;
 
 
   createUserWithEmailAndPassword(auth, email, password)
