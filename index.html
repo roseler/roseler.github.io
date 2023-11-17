@@ -77,39 +77,33 @@ submit.addEventListener('click',(e)=>
     // ..
   });
 });
+  
 signup.addEventListener('click',(e)=>
 {
   document.getElementById("main").style.display = "none";
   document.getElementById("create-acct").style.display = "block";
 });
-createacctbtn.addEventListener('click',(e)=>
-{
-
+  
+createacctbtn.addEventListener('click',(e) => {
   var emailsignup = document.getElementById("emailsignup").value;
-  var passwordsignup = document.getElementById("passwordsignup").value;
+  var passwordsignup = document.getElementById("password-signup").value;
 
+  firebase.auth().createUserWithEmailAndPassword(emailsignup, passwordsignup)
+    .then((userCredential) => {
+      // Signed up 
+      const user = userCredential.user;
 
-  createUserWithEmailAndPassword(auth, emailsignup, passwordsignup)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-
-    set(ref(database, 'users/' + user.uid), {
-      email: emailsignup,
-      password: passwordsignup,
-
-
+      firebase.database().ref('users/' + user.uid).set({
+        email: emailsignup,
+        password: passwordsignup
+      });
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
     });
-    alert('Signed up');
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-
-    alert(errorMessage);
-    // ..
-  });
 });
 </script>
 
