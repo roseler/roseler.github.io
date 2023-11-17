@@ -86,12 +86,10 @@ createacctbtn.addEventListener('click',(e)=>
 {
 
   var emailsignup = document.getElementById("emailsignup").value;
-  var confirmemailsignup = document.getElementById("confirmemailsignup").value;
   var passwordsignup = document.getElementById("passwordsignup").value;
-  var confirmpasswordsignup = document.getElementById("confirmpasswordsignup").value;
 
 
-  createUserWithEmailAndPassword(auth, email, password, emailsignup, confirmemailsignup, passwordsignup, confirmpasswordsignup)
+  createUserWithEmailAndPassword(auth, emailsignup, passwordsignup)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
