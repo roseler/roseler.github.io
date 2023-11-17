@@ -67,7 +67,7 @@ submit.addEventListener('click',(e)=>
     const user = userCredential.user;
     
     const dt = new Date();
-    update(ref(database, 'user/' + user.uid),{
+    update(ref(database, 'users/' + user.uid),{
       last_login: dt,
       
     });
