@@ -1,16 +1,17 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+  import { getDatabase,set, ref} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+  import { getAuth,signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCybmXAUWgGDCMNQWvcRdaMgE31I1GkF8M",
-  authDomain: "log-in-authentication-ac1b6.firebaseapp.com",
-  projectId: "log-in-authentication-ac1b6",
-  storageBucket: "log-in-authentication-ac1b6.appspot.com",
-  messagingSenderId: "735126972855",
-  appId: "1:735126972855:web:b26c16bd1de14bf361e032",
-  measurementId: "G-3GKSESXV7S"
-};
+    apiKey: "AIzaSyA-sybLjfW5dt26UBNsZSCmevSVNgYtJ3Q",
+    authDomain: "webapp-8c2d0.firebaseapp.com",
+    databaseURL: "https://webapp-8c2d0-default-rtdb.firebaseio.com",
+    projectId: "webapp-8c2d0",
+    storageBucket: "webapp-8c2d0.appspot.com",
+    messagingSenderId: "459872328416",
+    appId: "1:459872328416:web:ae6364040a2e2899a48e85",
+    measurementId: "G-M31HYRY9PG"
+  };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
